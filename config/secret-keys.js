@@ -7,5 +7,8 @@ module.exports = {
     mongodb: {
         dbURI: 'mongodb://YOUR_MLAB_DB_USERNAME:DB_PASSWORD@ds135413.mlab.com:35413/myproj'
        
+    },
+    session: {
+        cookieKey: 'YOUR_COOKIE_KEY'
     }
 }
