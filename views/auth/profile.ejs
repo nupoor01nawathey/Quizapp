@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>QUIZAPP</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <nav class="home-nav">
+            <button><a href="/auth/login/">Login</a></button>
+            <button><a href="/auth/logout/">Logout</a></button>
+            <h2>Welcome to your profile, <%= user.username %></h2>
+        </nav>
+        <main>
+            <p>
+                <img src="<%= user.thumbnail %>" alt="">
+            </p>
+        </main>
+    </body>
+</html>

@@ -1,21 +1,33 @@
-const express = require('express'),
-      ejs     = require('ejs'),
-      mongoose = require('mongoose'),
-      //path    = require('path'),
-      app     = express();
+const express       = require('express'),
+      ejs           = require('ejs'),
+      mongoose      = require('mongoose'),
+      cookieSession = require('cookie-session'),
+      passport      = require('passport'),
+      app           = express();
 
 
-const authRoutes    = require('./routes/auth-routes');
-const passportSetup = require('./config/passport-init');
-const keys          = require('./config/secret-keys');
+const authRoutes    = require('./routes/auth-routes'),
+      profileRoutes = require('./routes/user-profile');
+
+const passportSetup = require('./config/passport-init'),
+      keys          = require('./config/secret-keys');
 
 app.set('view engine', 'ejs');
-//app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(`${__dirname}/public`));
 
+// setup cookie session params, in milli sec, encrypt cookie
+app.use(cookieSession({ 
+    maxAge: 24 * 60 * 60 * 1000, 
+    keys: [ keys.session.cookieKey ]
+}))
+
+// initialize passport and session
+app.use(passport.initialize()); 
+app.use(passport.session());
+
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', {user: req.user});
 });
 
 mongoose.connect(keys.mongodb.dbURI,  { useNewUrlParser: true }, () => {
@@ -23,6 +35,7 @@ mongoose.connect(keys.mongodb.dbURI,  { useNewUrlParser: true }, () => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 const PORT = process.env.PORT || 3000 ;
 app.listen(PORT, () => {
