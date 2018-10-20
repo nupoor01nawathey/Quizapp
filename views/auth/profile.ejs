@@ -1,6 +1,49 @@
-<% include ../partials/header %>   
-<div class="page-header"> 
-    <h1><small>Welcome to your profile, <%= user.username %></small></h1>
+<% include ../partials/header %> 
+<li class="nav-item">
+    <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                <img src="<%= user.thumbnail %>" alt="">
+               <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li>
+                            <a href="/user/profile">Profile</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="/user/feedback">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="/user/terms">Terms</a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a href="/user/logout">Logout</a>
+                        </li>
+            </ul>
+          </div>
+</nav>
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <h1>Welcome to your profile, <%= user.username %></h1>
 </div>
-    <img src="<%= user.thumbnail %>" alt="">
+<div class="container-fluid content-row">
+    <% for (var i = 0; i < quizCategory.length; i++) { %>
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+                <div class="card mt-5 mx-auto">
+                    <div class="card h-50">
+                        <img class="card-img-top img-fluid" src="<%= quizCategory[i].image %>" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= quizCategory[i].title %></h5>
+                        <p class="card-text"><%= quizCategory[i].title %></p>
+                        <a href="<%= quizCategory[i].title %>" class="btn btn-primary">Visit Quiz</a>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    <% } %>
+</div>
+
 <% include ../partials/footer %>
