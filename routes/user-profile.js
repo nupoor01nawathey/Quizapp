@@ -1,15 +1,12 @@
 const router   = require('express').Router(),
       passport = require('passport');
 
-const authCheck = (req, res, next) => {
-    if(req.isAuthenticated()) {
-        next();  
-    }
-    return res.redirect('/auth/login');
-}
+const quizCategoryInfo = require('../config/quizCategorySeeder.js'); 
+const authCheck = require('../config/authCheck');
+
 
 router.get('/', authCheck, (req, res) => {
-    res.render('auth/profile', {user: req.user});
+    res.render('auth/profile', {user: req.user, quizCategory: quizCategoryInfo});
 });
 
 module.exports = router;

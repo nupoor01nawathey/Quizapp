@@ -7,19 +7,19 @@
             </button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                     <li>
-                            <a href="/user/profile">Profile</a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="/user/feedback">Feedback</a>
-                        </li>
-                        <li>
-                            <a href="/user/terms">Terms</a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                            <a href="/user/logout">Logout</a>
-                        </li>
+                        <a href="/user/profile">Profile</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="/user/feedback">Feedback</a>
+                    </li>
+                    <li>
+                        <a href="/user/terms">Terms</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="/user/logout">Logout</a>
+                    </li>
             </ul>
           </div>
 </nav>
@@ -37,8 +37,8 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"><%= quizCategory[i].title %></h5>
-                        <p class="card-text"><%= quizCategory[i].title %></p>
-                        <a href="<%= quizCategory[i].title %>" class="btn btn-primary">Visit Quiz</a>
+                        <p class="card-text"><%= quizCategory[i].description %></p>
+                        <a href="/list/<%= quizCategory[i].btnLink %>" class="btn btn-primary">Visit Quiz</a>
                     </div>            
                 </div>
             </div>
@@ -47,3 +47,5 @@
 </div>
 
 <% include ../partials/footer %>
+
+

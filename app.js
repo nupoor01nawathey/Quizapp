@@ -8,6 +8,7 @@ const express       = require('express'),
 
 const authRoutes    = require('./routes/auth-routes'),
       profileRoutes = require('./routes/user-profile');
+      listRoutes    = require('./routes/list-routes');
 
 const passportSetup = require('./config/passport-init'),
       keys          = require('./config/secret-keys');
@@ -36,6 +37,7 @@ mongoose.connect(keys.mongodb.dbURI,  { useNewUrlParser: true }, () => {
 
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
+app.use('/list', listRoutes);
 
 const PORT = process.env.PORT || 3000 ;
 app.listen(PORT, () => {
