@@ -4,7 +4,6 @@
     <div class="alert alert-success" role="alert">
         <h1>Welcome to DevOps Quizes</h1>
 </div>
-
 <div class="container-fluid content-row">
     <% for (var i = 0; i < list.length; i++) { %>
         <div class="row">
@@ -13,7 +12,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p class="card-text"><%= list[i] %></p>
-                            <a href="/enroll/<%= list[i] %>" class="btn btn-primary">Enroll</a>
+                            <a href="/enroll/<%= list[i].toLowerCase() %>" class="btn btn-primary" id="enroll-btn">Enroll</a>
                         </div>   
                     </div>        
                 </div>
@@ -21,5 +20,4 @@
         </div>
     <% } %>
 </div>
-
 <% include ../partials/footer %>
